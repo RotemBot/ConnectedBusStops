@@ -10,7 +10,7 @@ public class StationServer extends Thread {
     ServerSocket listenSocket;
     Socket clientSockets;
 
-    public StationServer()   // constructor of a TCP server
+    public StationServer(MessageManager mesMan)   // constructor of a TCP server
     {
         try
         {

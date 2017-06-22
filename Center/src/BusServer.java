@@ -9,9 +9,12 @@ public class BusServer extends Thread {
     private int DEFAULT_PORT = 771;
     private ServerSocket listenSocket;
     private Socket clientSockets;
+    private MessageManager mesMan;
 
-    public BusServer()   // constructor of a TCP server
+    public BusServer(MessageManager mesMan)   // constructor of a TCP server
     {
+        this.mesMan = mesMan;
+
         try
         {
             listenSocket = new ServerSocket(DEFAULT_PORT);
@@ -33,7 +36,7 @@ public class BusServer extends Thread {
             while (true)
             {
                 clientSockets = listenSocket.accept();
-                new BusDialog(clientSockets, this);
+                new BusDialog(clientSockets, this, mesMan);
             }
 
         } catch (IOException e)

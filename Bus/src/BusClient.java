@@ -16,6 +16,18 @@ public class BusClient {
     BufferedReader keyBoard;
     BusClientWin myOutput;
     String line;
+    private int lineNumber;
+    private int busId;
+
+    private static int idCounter = 0;
+
+
+    public BusClient () {
+        this.busId = idCounter;
+
+        // prepare the next bus's ID
+        idCounter ++;
+    }
 
     public void doit()
     {
@@ -44,6 +56,24 @@ public class BusClient {
             // notice about the connection
             myOutput.printMe("Connected to " + clientSocket.getInetAddress() +
                     ":" + clientSocket.getPort());
+
+            // request line to input bus line number from user
+            myOutput.printMe("Please enter the desired line number for this bus.");
+            line = bufferSocketIn.readLine();
+            try {
+                lineNumber = Integer.parseInt(line.trim());
+            }
+            catch(Exception e) {
+                myOutput.printMe("The value you have entered is illegal.\nBus line number is set to 0.");
+                lineNumber = 0;
+            }
+
+            // send line number and bus ID to BusDialog
+            bufferSocketOut.print("Bus " + busId + " has line number " + lineNumber);
+
+            // get the routes
+            line = bufferSocketIn.readLine();
+
             while (true)
             {
                 line = bufferSocketIn.readLine(); // reads a line from the server

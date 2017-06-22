@@ -7,11 +7,13 @@ import java.net.*;
 public class UseStationServer {
     public static void main(String[] arg)
     {
-        //Create servers for bus-stops and buses
-        new StationServer();
-        new BusServer();
-
         //Create the message manager
-        new MessageManager();
+        MessageManager mesMan = new MessageManager();
+
+        //Create servers for bus-stops and buses
+        new StationServer(mesMan);
+        new BusServer(mesMan);
+
+
     }
 }
