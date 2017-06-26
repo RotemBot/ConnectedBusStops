@@ -1,5 +1,6 @@
 import java.io.*;
 import java.net.Socket;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by rotem on 12/06/2017.
@@ -16,18 +17,9 @@ public class BusClient {
     BufferedReader keyBoard;
     BusClientWin myOutput;
     String line;
-    private int lineNumber;
-    private int busId;
-
-    private static int idCounter = 0;
 
 
-    public BusClient () {
-        this.busId = idCounter;
 
-        // prepare the next bus's ID
-        idCounter ++;
-    }
 
     public void doit()
     {
@@ -70,27 +62,28 @@ public class BusClient {
                 myOutput.printMe("The value you have entered is illegal.\nBus line number is set to 0.");
                 lineNumber = 0;
             }**/
+            // request line to input bus line number from user
+            myOutput.printMe("Please enter the desired line number for this bus (0-5) and an ID.");
 
             // get the routes
             line = bufferSocketIn.readLine();
+            String[] stops = line.split(" ");
 
-            try {
-                lineNumber = Integer.parseInt(line.trim());
-                if (lineNumber > 5 || lineNumber < 0) lineNumber = 0;
+            //Drive through route
+            for (int i = 0; i < stops.length; i ++) {
+                // Tell busClient we reached station #
+                bufferSocketOut.println(stops[i]);
+                 try {
+                     Event64 evTime = new Event64();
+                     new MyTimer72(5000, evTime);
+                 }
+                 catch (Exception e) {
+                     System.out.print(e.getMessage());
+                 }
             }
-            catch(Exception e) {
-                myOutput.printMe("The value you have entered is illegal.\nBus line number is set to 0.");
-                lineNumber = 0;
-            }
-            // send line number and bus ID to BusDialog
-            bufferSocketOut.print("Bus " + busId + " has line number " + lineNumber);
-
-            // get the routes
-            line = bufferSocketIn.readLine();
 
             while (true)
             {
-                // TODO: Advance bus through its route
                 line = bufferSocketIn.readLine(); // reads a line from the server
                 if (line == null)  // connection is closed ?  exit
                 {
@@ -120,10 +113,10 @@ public class BusClient {
             {
             }
         }
-        myOutput.printMe("end of bus " + busId + " client");
+        myOutput.printMe("end of bus client");
         myOutput.send.setText("Close");
 
-        System.out.println("end of bus " + busId + " client");
+        System.out.println("end of bus client");
     }
 
     public static void main(String[] args)

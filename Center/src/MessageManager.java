@@ -18,11 +18,13 @@ public class MessageManager {
     };
 
     //TODO: ADD Map<String,Event64> to manage connection with the stations
+    Map<Integer,Event64> stationsUpdateEv;
+
 
     public MessageManager() {
 
         //TODO: wait for updates from buses and inform the stations
-
+        stationsUpdateEv = new HashMap<Integer,Event64>();
     }
 
     /**
@@ -32,5 +34,26 @@ public class MessageManager {
      */
     public int[] getRoute(int busLine) {
         return routes[busLine];
+    }
+
+    public void updateBusPosition(int lineNumber, int stop, int busID) {
+
+        int[] route = routes[lineNumber];
+
+        int interval = 0;
+        boolean inPosition = false;
+        for (int station: route) {
+            if (inPosition) {
+                stationsUpdateEv.get(station).sendEvent(interval + " " + lineNumber + " " + busID);
+                interval ++;
+            } else {
+                if (station == stop) {
+                    inPosition = true;
+                    stationsUpdateEv.get(station).sendEvent(interval + " " + lineNumber + " " + busID);
+                    interval ++;
+                }
+            }
+        }
+
     }
 }

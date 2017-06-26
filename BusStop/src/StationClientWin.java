@@ -18,7 +18,7 @@ public class StationClientWin extends JFrame implements ActionListener
     private Style myStyle, otherStyle;
     private Style myHeaderStyle, otherHeaderStyle;
     public JButton send;
-    private String myName = "Your";
+    private String myName = "Station";
     private String otherName = "Server (Dialog)";
     private StationClient myClient;
 
@@ -36,7 +36,7 @@ public class StationClientWin extends JFrame implements ActionListener
 
         myStyle = doc.addStyle("myStyle", base);
         StyleConstants.setFontSize(myStyle, 14);
-        StyleConstants.setForeground(myStyle, Color.CYAN);
+        StyleConstants.setForeground(myStyle, Color.BLUE);
 
         myHeaderStyle = doc.addStyle("myHeaderStyle", myStyle);
         StyleConstants.setBold(myHeaderStyle, true);
@@ -108,5 +108,6 @@ public class StationClientWin extends JFrame implements ActionListener
         myClient.bufferSocketOut.println(textAreaDown.getText());
         textAreaDown.setText("");
     }
+
 }
 

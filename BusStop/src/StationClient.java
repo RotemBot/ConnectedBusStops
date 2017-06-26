@@ -1,9 +1,6 @@
 import java.io.*;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by rotem on 12/06/2017.
@@ -21,17 +18,10 @@ public class StationClient {
     String line;
     private int stationId;
     // manage bus arrival times
-    // There are three intervals, since there are maximum 4 stops in a route
-    private List<Map<Integer, Integer>> intervals = new ArrayList<Map<Integer, Integer>>();
+    // pairs of <busId : interval> mapped to bus lines.
+    private Map<Integer ,Map<Integer, Integer>> lines = new HashMap<>();
 
-    private static int idCounter = 0;
 
-    public StationClient() {
-        this.stationId = idCounter;
-
-        // prepare the next station's id
-        idCounter ++;
-    }
 
     public void doit()
     {
@@ -61,8 +51,8 @@ public class StationClient {
             myOutput.printMe("Connected to " + clientSocket.getInetAddress() +
                     ":" + clientSocket.getPort());
 
-            // send station ID to StationDialog
-            bufferSocketOut.print("New station with ID " + stationId);
+            myOutput.printMe("Please enter station number");
+
 
             while (true)
             {
@@ -72,7 +62,11 @@ public class StationClient {
                     myOutput.printMe("Connection closed by the Server.");
                     break;
                 }
-                myOutput.printOther(line); // shows it on the screen
+                myOutput.printMe("Got new data");
+                updateMessageBoard(line);
+                //myOutput.printOther(line); // shows it on the screen
+                printBusStatus();
+
                 if (line.equals("end"))
                 {
                     break;
@@ -100,10 +94,83 @@ public class StationClient {
         System.out.println("end of client ");
     }
 
+    private void printBusStatus() {
+
+        ArrayList<Integer> lineNums = new ArrayList<>(lines.keySet());
+        for (int i = 0; i < lines.size(); i ++) {
+            // get the line number
+            int lineNum = lineNums.get(i);
+            // get the map of bus IDs and intervals
+            Map queue = lines.get(lineNum);
+            ArrayList<Integer> busQue = new ArrayList<>(queue.keySet());
+
+            String toPrint = "Line: "+ lineNum + "-------";
+            boolean first = true;
+
+            for (int j = 0; j < queue.size(); j ++) {
+                int bus = busQue.get(j);
+                Integer interval = (Integer) queue.get(bus);
+                String time;
+
+                if (interval == 0)  {
+                    time = "Now";
+                    // Delete the bus that reached the station
+                    lines.get(lineNum).remove(bus);
+                }
+
+                else time = (interval * 5) + "s";
+
+                if (first) {
+                    toPrint += time;
+                    first = false;
+                }
+
+                else toPrint += ", " + time;
+            }
+
+            myOutput.printMe(toPrint);
+
+        }
+    }
+
+    private void updateMessageBoard(String data) {
+        String[] details = data.split(" ");
+        Integer interval = Integer.parseInt(details[0]);
+        Integer busLine = Integer.parseInt(details[1]);
+        Integer busID = Integer.parseInt(details[2]);
+
+        Map<Integer, Integer> queue = new HashMap<>();
+        queue.put(busID, interval);
+
+        if (lines.isEmpty()) {
+            lines.put(busLine, queue);
+        }
+
+        else if (!lines.containsKey(busLine)) {
+            lines.put(busLine, queue);
+        }
+
+        else {
+            Map waiting = lines.get(busLine);
+            if (waiting.isEmpty()) {
+                waiting.put(busID, interval);
+            }
+            else if (!waiting.containsKey(busID)) {
+                waiting.put(busID, interval);
+            }
+
+            else {
+                waiting.replace(busID, interval);
+            }
+        }
+
+    }
+
     public static void main(String[] args)
     {
-        StationClient client = new StationClient();
-        client.doit();
+        StationClient station = new StationClient();
+        station.doit();
+
     }
 
 }
