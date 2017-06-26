@@ -10,6 +10,8 @@ public class StationServer extends Thread {
     ServerSocket listenSocket;
     Socket clientSockets;
     MessageManager mesMan;
+    Event64[] stopsEvents;
+    static int i = 0;
 
     public StationServer(MessageManager mesMan)   // constructor of a TCP server
     {
@@ -36,7 +38,9 @@ public class StationServer extends Thread {
             while (true)
             {
                 clientSockets = listenSocket.accept();
-                new StationDialog(clientSockets, this, this.mesMan);
+                stopsEvents[i] = new Event64();
+                new StationDialog(clientSockets, this, this.mesMan, stopsEvents[i]);
+                i++;
             }
 
         } catch (IOException e)

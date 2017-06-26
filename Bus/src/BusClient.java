@@ -57,6 +57,7 @@ public class BusClient {
             myOutput.printMe("Connected to " + clientSocket.getInetAddress() +
                     ":" + clientSocket.getPort());
 
+
             /*
             // request line to input bus line number from user
             myOutput.printMe("Please enter the desired line number for this bus (0-5).");

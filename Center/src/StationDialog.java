@@ -14,7 +14,7 @@ public class StationDialog extends Thread {
 
     private int stopNumber;
 
-    public StationDialog(Socket clientSocket, StationServer myServer, MessageManager getMesMan)
+    public StationDialog(Socket clientSocket, StationServer myServer, MessageManager getMesMan, Event64 evUpdate)
     {
         this.mesMan = getMesMan;
         client = clientSocket;
