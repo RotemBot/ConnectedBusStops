@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="085b366b-09a9-4af8-bbca-70de55ca4682" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bus/out/production/Bus/BusClient.class" afterPath="$PROJECT_DIR$/../Bus/out/production/Bus/BusClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bus/out/production/Bus/BusClientWin.class" afterPath="$PROJECT_DIR$/../Bus/out/production/Bus/BusClientWin.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bus/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Bus/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bus/src/BusClient.java" afterPath="$PROJECT_DIR$/../Bus/src/BusClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bus/src/BusClientWin.java" afterPath="$PROJECT_DIR$/../Bus/src/BusClientWin.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../BusStop/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../BusStop/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../BusStop/src/StationClient.java" afterPath="$PROJECT_DIR$/../BusStop/src/StationClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../BusStop/src/StationClientWin.java" afterPath="$PROJECT_DIR$/../BusStop/src/StationClientWin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BusDialog.java" afterPath="$PROJECT_DIR$/src/BusDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MessageManager.java" afterPath="$PROJECT_DIR$/src/MessageManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/StationDialog.java" afterPath="$PROJECT_DIR$/src/StationDialog.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -754,12 +745,12 @@
       <workItem from="1497266574553" duration="2169000" />
       <workItem from="1497866398664" duration="5809000" />
       <workItem from="1498458977205" duration="5026000" />
-      <workItem from="1498471541607" duration="12679000" />
+      <workItem from="1498471541607" duration="13211000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25908000" />
+    <option name="totallyTimeSpent" value="26440000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -771,7 +762,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="-7" y="0" width="974" height="1047" extended-state="1" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
