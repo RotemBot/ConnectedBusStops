@@ -41,10 +41,14 @@ public class MessageManager {
         int[] route = routes[lineNumber];
 
         int interval = 0;
-        boolean position = false;
+        boolean inPosition = false;
         for (int station: route) {
-            if(!position) {
-                if (station == stop) position = true;
+            if(!inPosition) {
+                if (station == stop) {
+                    inPosition = true;
+                    stationsUpdateEv.get(station).sendEvent(interval + " " + lineNumber + " " + busID);
+                    interval ++;
+                }
             }
 
             else {

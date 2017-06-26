@@ -62,8 +62,9 @@ public class StationClient {
                     myOutput.printMe("Connection closed by the Server.");
                     break;
                 }
+                myOutput.printMe("Got new data");
                 updateMessageBoard(line);
-                myOutput.printOther(line); // shows it on the screen
+                //myOutput.printOther(line); // shows it on the screen
                 printBusStatus();
 
                 if (line.equals("end"))
@@ -101,24 +102,68 @@ public class StationClient {
             int lineNum = lineNums.get(i);
             // get the map of bus IDs and intervals
             Map queue = lines.get(lineNum);
+            ArrayList<Integer> busQue = new ArrayList<>(queue.keySet());
+
+            String toPrint = "Line: "+ lineNum + "-------";
+            boolean first = true;
+
+            for (int j = 0; j < queue.size(); j ++) {
+                int bus = busQue.get(j);
+                Integer interval = (Integer) queue.get(bus);
+                String time;
+
+                if (interval == 0)  {
+                    time = "Now";
+                    // Delete the bus that reached the station
+                    lines.get(lineNum).remove(bus);
+                }
+
+                else time = (interval * 5) + "s";
+
+                if (first) {
+                    toPrint += time;
+                    first = false;
+                }
+
+                else toPrint += ", " + time;
+            }
+
+            myOutput.printMe(toPrint);
 
         }
     }
 
     private void updateMessageBoard(String data) {
         String[] details = data.split(" ");
-        int interval = Integer.parseInt(details[0]);
-        int busLine = Integer.parseInt(details[1]);
-        int busID = Integer.parseInt(details[2]);
+        Integer interval = Integer.parseInt(details[0]);
+        Integer busLine = Integer.parseInt(details[1]);
+        Integer busID = Integer.parseInt(details[2]);
 
-        Map waiting = lines.get(busLine);
-        if (!waiting.containsKey(busID)) {
-            waiting.put(busID, interval);
+        Map<Integer, Integer> queue = new HashMap<>();
+        queue.put(busID, interval);
+
+        if (lines.isEmpty()) {
+            lines.put(busLine, queue);
+        }
+
+        else if (!lines.containsKey(busLine)) {
+            lines.put(busLine, queue);
         }
 
         else {
-            waiting.replace(busID, interval);
+            Map waiting = lines.get(busLine);
+            if (waiting.isEmpty()) {
+                waiting.put(busID, interval);
+            }
+            else if (!waiting.containsKey(busID)) {
+                waiting.put(busID, interval);
+            }
+
+            else {
+                waiting.replace(busID, interval);
+            }
         }
+
     }
 
 

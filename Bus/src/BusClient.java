@@ -82,7 +82,6 @@ public class BusClient {
 
             while (true)
             {
-                // TODO: Advance bus through its route
                 line = bufferSocketIn.readLine(); // reads a line from the server
                 if (line == null)  // connection is closed ?  exit
                 {

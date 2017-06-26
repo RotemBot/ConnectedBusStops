@@ -40,7 +40,7 @@ public class BusDialog extends Thread {
             // Extract information
             String[] words = identification.split(" ");
 
-            busId = Integer.parseInt(words[0]);
+            busId = Integer.parseInt(words[1]);
             lineNumber = Integer.parseInt(words[0]);
 
             // get the route for this specific bus line
@@ -87,8 +87,6 @@ public class BusDialog extends Thread {
 
             while (true)
             {
-                //TODO: update the MessageManager on the bus's progress
-                // TODO: get the updates from the bus
                 line = bufferSocketIn.readLine();
                 if (line == null)
                     break;

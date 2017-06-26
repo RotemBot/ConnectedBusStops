@@ -65,10 +65,11 @@ public class StationDialog extends Thread {
             while (true)
             {
                 String data = (String)evUpdate.waitEvent();
-                myOutput.printMe(data);
+                // send to stations
+                bufferSocketOut.println(data);
                 line = bufferSocketIn.readLine();
-                if (line == null)
-                    break;
+                /*if (line == null)
+                    break;*/
                 if (line.equals("end"))
                     break;
                 myOutput.printOther(line);
