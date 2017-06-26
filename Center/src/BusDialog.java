@@ -21,6 +21,9 @@ public class BusDialog extends Thread {
         this.mesMan = getMesMan;
         client = clientSocket;
         this.myServer = myServer;
+
+        myOutput = new BusDialogWin("Dialog Win for: " + client.toString(), this);
+
         try
         {
             // Init streams to read/write text in this socket
@@ -32,13 +35,13 @@ public class BusDialog extends Thread {
                             new OutputStreamWriter(
                                     clientSocket.getOutputStream())), true);
 
-            // The first line the bus sends its identification
+        /*    // The first line the bus sends its identification
             String identification = bufferSocketIn.readLine();
             // Extract information
             String[] words = identification.split("\\s ");
 
-            busId = Integer.parseInt(words[1]);
-            lineNumber = Integer.parseInt(words[5]);
+            busId = Integer.parseInt(words[0]);
+            lineNumber = Integer.parseInt(words[0]);
 
             // get the route for this specific bus line
             route = mesMan.getRoute(lineNumber);
@@ -52,7 +55,7 @@ public class BusDialog extends Thread {
 
             // send the route back to the bus
             bufferSocketOut.print(routeString.trim());
-
+*/
 
         }
         catch (IOException e)
@@ -66,7 +69,8 @@ public class BusDialog extends Thread {
             System.err.println("server:Exception when opening sockets: " + e);
             return;
         }
-        myOutput = new BusDialogWin("Dialog Win for: " + client.toString(), this);
+        // myOutput = new BusDialogWin("Dialog Win for: " + client.toString(), this);
+
         start();
     }
 
@@ -74,8 +78,15 @@ public class BusDialog extends Thread {
     {
         String line;
         boolean stop=false;
+
+
+
         try
         {
+            // request line to input bus line number from user
+            myOutput.printMe("Please enter the desired line number for this bus (0-5).");
+            //line = bufferSocketIn.readLine();
+
             while (true)
             {
                 //TODO: update the MessageManager on the bus's progress

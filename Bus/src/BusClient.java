@@ -57,6 +57,7 @@ public class BusClient {
             myOutput.printMe("Connected to " + clientSocket.getInetAddress() +
                     ":" + clientSocket.getPort());
 
+            /*
             // request line to input bus line number from user
             myOutput.printMe("Please enter the desired line number for this bus (0-5).");
             line = bufferSocketIn.readLine();
@@ -67,8 +68,19 @@ public class BusClient {
             catch(Exception e) {
                 myOutput.printMe("The value you have entered is illegal.\nBus line number is set to 0.");
                 lineNumber = 0;
-            }
+            }**/
 
+            // get the routes
+            line = bufferSocketIn.readLine();
+
+            try {
+                lineNumber = Integer.parseInt(line.trim());
+                if (lineNumber > 5 || lineNumber < 0) lineNumber = 0;
+            }
+            catch(Exception e) {
+                myOutput.printMe("The value you have entered is illegal.\nBus line number is set to 0.");
+                lineNumber = 0;
+            }
             // send line number and bus ID to BusDialog
             bufferSocketOut.print("Bus " + busId + " has line number " + lineNumber);
 
