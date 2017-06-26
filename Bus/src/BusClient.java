@@ -49,6 +49,7 @@ public class BusClient {
             myOutput.printMe("Connected to " + clientSocket.getInetAddress() +
                     ":" + clientSocket.getPort());
 
+
             /*
             // request line to input bus line number from user
             myOutput.printMe("Please enter the desired line number for this bus (0-5).");
@@ -73,7 +74,8 @@ public class BusClient {
                 // Tell busClient we reached station #
                 bufferSocketOut.println(stops[i]);
                  try {
-                     TimeUnit.SECONDS.sleep(5);
+                     Event64 evTime = new Event64();
+                     new MyTimer72(5000, evTime);
                  }
                  catch (Exception e) {
                      System.out.print(e.getMessage());

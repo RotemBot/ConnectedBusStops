@@ -43,17 +43,15 @@ public class MessageManager {
         int interval = 0;
         boolean inPosition = false;
         for (int station: route) {
-            if(!inPosition) {
+            if (inPosition) {
+                stationsUpdateEv.get(station).sendEvent(interval + " " + lineNumber + " " + busID);
+                interval ++;
+            } else {
                 if (station == stop) {
                     inPosition = true;
                     stationsUpdateEv.get(station).sendEvent(interval + " " + lineNumber + " " + busID);
                     interval ++;
                 }
-            }
-
-            else {
-                stationsUpdateEv.get(station).sendEvent(interval + " " + lineNumber + " " + busID);
-                interval ++;
             }
         }
 

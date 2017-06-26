@@ -12,12 +12,11 @@ public class StationDialog extends Thread {
     PassengerDialogWin myOutput;
     MessageManager mesMan;
     Event64 evUpdate;
-
-    private int stopNumber;
+    int stopNumber;
 
     public StationDialog(Socket clientSocket, StationServer myServer, MessageManager getMesMan)
     {
-        evUpdate = new Event64();
+        this.evUpdate = new Event64();
         this.mesMan = getMesMan;
         client = clientSocket;
         this.myServer = myServer;
@@ -35,8 +34,8 @@ public class StationDialog extends Thread {
             //The first line the station sends is it's ID
             String stationID = bufferSocketIn.readLine();
 
-            stopNumber = Integer.parseInt(stationID);
-            mesMan.stationsUpdateEv.put(stopNumber, evUpdate);
+            this.stopNumber = Integer.parseInt(stationID);
+            mesMan.stationsUpdateEv.put(this.stopNumber, evUpdate);
 
             //TODO: create a custom event for each station and send it to the MessageManager
         } catch (IOException e)
@@ -64,15 +63,18 @@ public class StationDialog extends Thread {
         {
             while (true)
             {
-                String data = (String)evUpdate.waitEvent();
-                // send to stations
-                bufferSocketOut.println(data);
-                line = bufferSocketIn.readLine();
+                if (evUpdate.arrivedEvent()) {
+                    String data = (String) evUpdate.waitEvent();
+                    // send to stations
+                    bufferSocketOut.println(data);
+                    line = bufferSocketIn.readLine();
                 /*if (line == null)
                     break;*/
-                if (line.equals("end"))
-                    break;
-                myOutput.printOther(line);
+                    if (line.equals("end"))
+                        break;
+                    myOutput.printOther(line);
+                }
+                else yield();
             }
         } catch (IOException e)
         {

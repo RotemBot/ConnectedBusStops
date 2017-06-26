@@ -166,7 +166,6 @@ public class StationClient {
 
     }
 
-
     public static void main(String[] args)
     {
         StationClient station = new StationClient();
