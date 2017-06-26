@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="085b366b-09a9-4af8-bbca-70de55ca4682" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bus/out/production/Bus/BusClient.class" afterPath="$PROJECT_DIR$/../Bus/out/production/Bus/BusClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../BusStop/out/production/BusStop/StationClient.class" afterPath="$PROJECT_DIR$/../BusStop/out/production/BusStop/StationClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Center/BusDialog.class" afterPath="$PROJECT_DIR$/out/production/Center/BusDialog.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Center/BusServer.class" afterPath="$PROJECT_DIR$/out/production/Center/BusServer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Center/MessageManager.class" afterPath="$PROJECT_DIR$/out/production/Center/MessageManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Center/StationDialog.class" afterPath="$PROJECT_DIR$/out/production/Center/StationDialog.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Center/StationServer.class" afterPath="$PROJECT_DIR$/out/production/Center/StationServer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bus/.idea/misc.xml" afterPath="$PROJECT_DIR$/../Bus/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bus/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Bus/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bus/src/BusClient.java" afterPath="$PROJECT_DIR$/../Bus/src/BusClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../BusStop/.idea/misc.xml" afterPath="$PROJECT_DIR$/../BusStop/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../BusStop/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../BusStop/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BusDialog.java" afterPath="$PROJECT_DIR$/src/BusDialog.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -73,7 +60,7 @@
       <file leaf-file-name="BusDialog.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/BusDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1294">
+            <state relative-caret-position="1308">
               <caret line="112" column="44" selection-start-line="112" selection-start-column="44" selection-end-line="112" selection-end-column="44" />
               <folding>
                 <element signature="method#BusDialog#0;class#BusDialog#0" expanded="true" />
@@ -934,7 +921,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BusDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1294">
+        <state relative-caret-position="1308">
           <caret line="112" column="44" selection-start-line="112" selection-start-column="44" selection-end-line="112" selection-end-column="44" />
           <folding>
             <element signature="method#BusDialog#0;class#BusDialog#0" expanded="true" />
