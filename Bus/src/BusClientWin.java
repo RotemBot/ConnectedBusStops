@@ -18,8 +18,8 @@ public class BusClientWin extends JFrame implements ActionListener
     private Style myStyle, otherStyle;
     private Style myHeaderStyle, otherHeaderStyle;
     public JButton send;
-    private String myName = "Your";
-    private String otherName = "Server (Dialog)";
+    private String myName = "Bus: ";
+    private String otherName = "Server (Dialog):";
     private BusClient myClient;
 
     public BusClientWin(String header, BusClient myClient)

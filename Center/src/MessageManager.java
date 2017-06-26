@@ -33,4 +33,9 @@ public class MessageManager {
     public int[] getRoute(int busLine) {
         return routes[busLine];
     }
+
+    public void updateBusPosition(int lineNumber, int stop, int busID) {
+        int temp = 0;
+
+    }
 }

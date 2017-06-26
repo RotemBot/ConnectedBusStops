@@ -35,10 +35,10 @@ public class BusDialog extends Thread {
                             new OutputStreamWriter(
                                     clientSocket.getOutputStream())), true);
 
-        /*    // The first line the bus sends its identification
+            // The first line the bus sends its identification
             String identification = bufferSocketIn.readLine();
             // Extract information
-            String[] words = identification.split("\\s ");
+            String[] words = identification.split(" ");
 
             busId = Integer.parseInt(words[0]);
             lineNumber = Integer.parseInt(words[0]);
@@ -50,12 +50,13 @@ public class BusDialog extends Thread {
 
             // Convert the route to String, to send over socket
             for(int stop : route) {
-                routeString.concat(stop + " ");
+                routeString += stop;
+                routeString += " ";
             }
 
             // send the route back to the bus
-            bufferSocketOut.print(routeString.trim());
-*/
+            bufferSocketOut.println(routeString.trim());
+
 
         }
         catch (IOException e)
@@ -83,9 +84,6 @@ public class BusDialog extends Thread {
 
         try
         {
-            // request line to input bus line number from user
-            myOutput.printMe("Please enter the desired line number for this bus (0-5).");
-            //line = bufferSocketIn.readLine();
 
             while (true)
             {
@@ -96,7 +94,8 @@ public class BusDialog extends Thread {
                     break;
                 if (line.equals("end"))
                     break;
-                myOutput.printOther(line);
+                mesMan.updateBusPosition(this.lineNumber, Integer.parseInt(line), this.busId);
+                myOutput.printOther("Bus " + this.lineNumber + " is at station " + line);
             }
         } catch (IOException e)
         {
