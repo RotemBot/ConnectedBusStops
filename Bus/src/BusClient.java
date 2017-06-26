@@ -58,10 +58,11 @@ public class BusClient {
                     ":" + clientSocket.getPort());
 
             // request line to input bus line number from user
-            myOutput.printMe("Please enter the desired line number for this bus.");
+            myOutput.printMe("Please enter the desired line number for this bus (0-5).");
             line = bufferSocketIn.readLine();
             try {
                 lineNumber = Integer.parseInt(line.trim());
+                if (lineNumber > 5 || lineNumber < 0) lineNumber = 0;
             }
             catch(Exception e) {
                 myOutput.printMe("The value you have entered is illegal.\nBus line number is set to 0.");
@@ -76,12 +77,14 @@ public class BusClient {
 
             while (true)
             {
+                // TODO: Advance bus through its route
                 line = bufferSocketIn.readLine(); // reads a line from the server
                 if (line == null)  // connection is closed ?  exit
                 {
                     myOutput.printMe("Connection closed by the Server.");
                     break;
                 }
+                // TODO: kill bus when it reaches the end of the route
                 myOutput.printOther(line); // shows it on the screen
                 if (line.equals("end"))
                 {
@@ -104,10 +107,10 @@ public class BusClient {
             {
             }
         }
-        myOutput.printMe("end of client ");
+        myOutput.printMe("end of bus " + busId + " client");
         myOutput.send.setText("Close");
 
-        System.out.println("end of client ");
+        System.out.println("end of bus " + busId + " client");
     }
 
     public static void main(String[] args)

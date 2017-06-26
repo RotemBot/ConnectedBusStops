@@ -17,7 +17,11 @@ public class MessageManager {
 
     };
 
+    //TODO: ADD Map<String,Event64> to manage connection with the stations
+
     public MessageManager() {
+
+        //TODO: wait for updates from buses and inform the stations
 
     }
 

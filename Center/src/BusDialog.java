@@ -10,12 +10,15 @@ public class BusDialog extends Thread {
     BufferedReader bufferSocketIn;
     PrintWriter bufferSocketOut;
     BusDialogWin myOutput;
+    private MessageManager mesMan;
+
     int busId;
     int lineNumber;
     int[] route;
 
-    public BusDialog(Socket clientSocket, BusServer myServer, MessageManager mesMan)
+    public BusDialog(Socket clientSocket, BusServer myServer, MessageManager getMesMan)
     {
+        this.mesMan = getMesMan;
         client = clientSocket;
         this.myServer = myServer;
         try
@@ -75,6 +78,8 @@ public class BusDialog extends Thread {
         {
             while (true)
             {
+                //TODO: update the MessageManager on the bus's progress
+                // TODO: get the updates from the bus
                 line = bufferSocketIn.readLine();
                 if (line == null)
                     break;

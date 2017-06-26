@@ -9,9 +9,12 @@ public class StationServer extends Thread {
     int DEFAULT_PORT = 770;
     ServerSocket listenSocket;
     Socket clientSockets;
+    MessageManager mesMan;
 
     public StationServer(MessageManager mesMan)   // constructor of a TCP server
     {
+        this.mesMan = mesMan;
+
         try
         {
             listenSocket = new ServerSocket(DEFAULT_PORT);
@@ -33,7 +36,7 @@ public class StationServer extends Thread {
             while (true)
             {
                 clientSockets = listenSocket.accept();
-                new StationDialog(clientSockets, this);
+                new StationDialog(clientSockets, this, this.mesMan);
             }
 
         } catch (IOException e)

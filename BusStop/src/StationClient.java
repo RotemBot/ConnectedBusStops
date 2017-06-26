@@ -1,5 +1,9 @@
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by rotem on 12/06/2017.
@@ -15,6 +19,19 @@ public class StationClient {
     BufferedReader keyBoard;
     StationClientWin myOutput;
     String line;
+    private int stationId;
+    // manage bus arrival times
+    // There are three intervals, since there are maximum 4 stops in a route
+    private List<Map<Integer, Integer>> intervals = new ArrayList<Map<Integer, Integer>>();
+
+    private static int idCounter = 0;
+
+    public StationClient() {
+        this.stationId = idCounter;
+
+        // prepare the next station's id
+        idCounter ++;
+    }
 
     public void doit()
     {
@@ -43,6 +60,10 @@ public class StationClient {
             // notice about the connection
             myOutput.printMe("Connected to " + clientSocket.getInetAddress() +
                     ":" + clientSocket.getPort());
+
+            // send station ID to StationDialog
+            bufferSocketOut.print("New station with ID " + stationId);
+
             while (true)
             {
                 line = bufferSocketIn.readLine(); // reads a line from the server
