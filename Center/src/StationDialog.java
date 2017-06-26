@@ -11,11 +11,13 @@ public class StationDialog extends Thread {
     PrintWriter bufferSocketOut;
     PassengerDialogWin myOutput;
     MessageManager mesMan;
+    Event64 evUpdate;
 
     private int stopNumber;
 
     public StationDialog(Socket clientSocket, StationServer myServer, MessageManager getMesMan)
     {
+        evUpdate = new Event64();
         this.mesMan = getMesMan;
         client = clientSocket;
         this.myServer = myServer;
@@ -32,10 +34,9 @@ public class StationDialog extends Thread {
 
             //The first line the station sends is it's ID
             String stationID = bufferSocketIn.readLine();
-            // Extract information
-            String[] words = stationID.split("\\s ");
 
-            stopNumber = Integer.parseInt(words[4]);
+            stopNumber = Integer.parseInt(stationID);
+            mesMan.stationsUpdateEv.put(stopNumber, evUpdate);
 
             //TODO: create a custom event for each station and send it to the MessageManager
         } catch (IOException e)
@@ -50,6 +51,7 @@ public class StationDialog extends Thread {
             return;
         }
         myOutput = new PassengerDialogWin("Dialog Win for station: " + this.stopNumber, this);
+        myOutput.printMe("This is station #" + this.stopNumber);
         // What is this starting? Should it be "run()"?
         start();
     }
@@ -62,7 +64,8 @@ public class StationDialog extends Thread {
         {
             while (true)
             {
-                //TODO: wait for events and let the StationClient know
+                String data = (String)evUpdate.waitEvent();
+                myOutput.printMe(data);
                 line = bufferSocketIn.readLine();
                 if (line == null)
                     break;
