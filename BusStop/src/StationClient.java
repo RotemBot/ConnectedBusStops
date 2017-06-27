@@ -104,7 +104,7 @@ public class StationClient {
             Map queue = lines.get(lineNum);
             ArrayList<Integer> busQue = new ArrayList<>(queue.keySet());
 
-            String toPrint = "Line: "+ lineNum + "-------";
+            String toPrint = "Line: "+ lineNum + " ";
             boolean first = true;
 
             for (int j = 0; j < queue.size(); j ++) {

@@ -49,34 +49,33 @@ public class StationDialog extends Thread {
             System.err.println("server:Exception when opening sockets: " + e);
             return;
         }
-        myOutput = new PassengerDialogWin("Dialog Win for station: " + this.stopNumber, this);
+        myOutput = new PassengerDialogWin("Dialog station: " + this.stopNumber, this);
         myOutput.printMe("This is station #" + this.stopNumber);
-        // What is this starting? Should it be "run()"?
+
         start();
     }
 
     public void run()
     {
         String line;
-        boolean stop = false;
         try
         {
             while (true)
             {
+                /*line = bufferSocketIn.readLine();
+                if (line == null)
+                    break;
+                if (line.equals("end"))
+                    break;
+                myOutput.printOther(line);*/
                 if (evUpdate.arrivedEvent()) {
                     String data = (String) evUpdate.waitEvent();
                     // send to stations
                     bufferSocketOut.println(data);
-                    line = bufferSocketIn.readLine();
-                /*if (line == null)
-                    break;*/
-                    if (line.equals("end"))
-                        break;
-                    myOutput.printOther(line);
                 }
-                else yield();
             }
-        } catch (IOException e)
+        }
+        catch (/*IO*/Exception e)
         {
         } finally
         {

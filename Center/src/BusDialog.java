@@ -22,7 +22,7 @@ public class BusDialog extends Thread {
         client = clientSocket;
         this.myServer = myServer;
 
-        myOutput = new BusDialogWin("Dialog Win for: " + client.toString(), this);
+        myOutput = new BusDialogWin("Dialog bus: " + client.toString(), this);
 
         try
         {
