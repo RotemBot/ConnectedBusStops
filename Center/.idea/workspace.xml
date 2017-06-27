@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="085b366b-09a9-4af8-bbca-70de55ca4682" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bus/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Bus/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../BusStop/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../BusStop/.idea/workspace.xml" />
+=======
     <list default="true" id="fdb3bdfb-87df-4f28-b648-b1d6a7be7351" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Bus/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Bus/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../BusStop/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../BusStop/.idea/workspace.xml" />
@@ -8,7 +13,11 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BusDialog.java" afterPath="$PROJECT_DIR$/src/BusDialog.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/StationDialog.java" afterPath="$PROJECT_DIR$/src/StationDialog.java" />
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/StationServer.java" afterPath="$PROJECT_DIR$/src/StationServer.java" />
+=======
+>>>>>>> 64482c978b0914ec4116e6868d78adede079c188
+>>>>>>> 5dde7f3b064a3dfc466d6bcfe0cd0b336ee6d465
     </list>
     <ignored path="Center.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -420,6 +429,31 @@
       <created>1498490616825</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
+      <updated>1497265763668</updated>
+      <workItem from="1497265766907" duration="225000" />
+      <workItem from="1497266574553" duration="2169000" />
+      <workItem from="1497866398664" duration="5809000" />
+      <workItem from="1498458977205" duration="5026000" />
+      <workItem from="1498471541607" duration="13211000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="26440000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="0" width="974" height="1047" extended-state="1" />
+=======
       <updated>1498490616825</updated>
     </task>
     <servers />
@@ -427,6 +461,7 @@
   <component name="ToolWindowManager">
     <frame x="-20" y="34" width="1378" height="744" extended-state="1" />
     <editor active="true" />
+>>>>>>> 64482c978b0914ec4116e6868d78adede079c188
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
