@@ -62,7 +62,7 @@ public class StationClient {
                     myOutput.printMe("Connection closed by the Server.");
                     break;
                 }
-                myOutput.printMe("Got new data");
+                //myOutput.printMe("Got new data");
                 updateMessageBoard(line);
                 //myOutput.printOther(line); // shows it on the screen
                 printBusStatus();
